@@ -33,16 +33,25 @@ class MainTest {
     @Test
     public void testDesbordamientoEntero() {
         int[] arreglo = {Integer.MAX_VALUE, 2};
-        int resultado = Main.mayorAdyacente(arreglo);
-        // Este test verifica si hay desbordamiento, no lanza error, pero el resultado es negativo
-        assertTrue(resultado < 0, "Se esperaba un desbordamiento de int que cause valor negativo");
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            Main.mayorAdyacente(arreglo);
+        });
     }
+
 
     @Test
     public void testArregloValido() {
         int[] arreglo = {3, 6, -2, -5, 7, 3};
         int resultado = Main.mayorAdyacente(arreglo);
         assertEquals(21, resultado); // 7 * 3 = 21 es el mayor producto adyacente
+    }
+
+    @Test
+    public void testValoresFueraDeRango(){
+        int[] arreglo = {3, 1500, -2, -5, 7, 3 };
+        Exception exception = assertThrows(IllegalArgumentException.class, () ->{Main.mayorAdyacente(arreglo);});
+        assertEquals("Los valores deben estar en el rango de -1000 a 1000", exception.getMessage());
     }
 
 }
