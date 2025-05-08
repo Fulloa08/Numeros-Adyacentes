@@ -9,11 +9,17 @@ public class Main {
 
     public static int mayorAdyacente(int[] arreglo) {
         if (arreglo == null){
-            throw new IllegalArgumentException("El arreglo no puede ser null")
+            throw new IllegalArgumentException("El arreglo no puede ser null");
         }
         if (arreglo.length < 2) {
             throw new IllegalArgumentException("El arreglo debe tener al menos dos elementos");
         }
+        for (int i = 0; i < arreglo.length; i++) {
+            if (arreglo[i] < -1000 || arreglo[i] > 1000) {
+                throw new IllegalArgumentException("Los valores deben estar en el rango de -1000 a 1000");
+            }
+        }
+
 
         int maxProducto = arreglo[0] * arreglo[1];
 
