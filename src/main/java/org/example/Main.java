@@ -20,7 +20,6 @@ public class Main {
                 maxProducto = producto;
             }
         }
-
         return maxProducto;
     }
 }
